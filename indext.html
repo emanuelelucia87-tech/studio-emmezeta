@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Emmezeta - Amministrazioni Condominiali Bologna</title>
+    <meta name="description" content="Amministrazioni condominiali e private a Bologna. Professionalità, trasparenza e aggiornamento costante dal 2010.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .emmezeta-gradient { background: linear-gradient(135deg, #1e5a8e 0%, #2d7bc9 100%); }
+        .emmezeta-text-gradient { 
+            background: linear-gradient(135deg, #1e5a8e 0%, #2d7bc9 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
+        }
+        .service-card { transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(30, 90, 142, 0.25); }
+        .team-card { transition: all 0.3s ease; }
+        .team-card:hover { transform: translateY(-4px); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #1e5a8e 0%, #2d7bc9 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 p-4 hidden">
+        <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div class="p-6">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-cookie text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-slate-800">Informativa sui Cookie</h3>
+                            <button onclick="closeCookieBanner()" class="text-slate-400 hover:text-slate-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Questo sito utilizza cookie tecnici necessari per il funzionamento. 
+                            Per maggiori informazioni, consulta la nostra <a href="privacy-policy.html" class="text-blue-600 underline">Privacy Policy</a>.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button onclick="acceptCookies()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium text-sm">
+                                <i class="fas fa-shield-alt mr-2"></i>Accetta tutti
+                            </button>
+                            <button onclick="rejectCookies()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-2.5 rounded-lg font-medium text-sm">
+                                Solo cookie necessari
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="bg-slate-800 text-white py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-sm">
+            <div class="flex items-center gap-4">
+                <a href="tel:0516412775" class="flex items-center gap-1 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-phone"></i>
+                    <span>051 6412775</span>
+                </a>
+                <a href="mailto:amministrazionimz@gmail.com" class="flex items-center gap-1 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden sm:inline">amministrazionimz@gmail.com</span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-1 text-slate-300">
+                <i class="fas fa-building"></i>
+                <span>Amministrazioni Condominiali Bologna e Provincia</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center shadow-md">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold text-slate-800 leading-tight">STUDIO</span>
+                        <span class="text-xl font-bold emmezeta-text-gradient leading-tight">EMMEZETA</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="nav-link active flex flex-col items-center">
+                        <span class="text-sm font-semibold text-blue-700">Home</span>
+                        <span class="text-xs text-slate-400">Amministrazioni</span>
+                    </a>
+                    <a href="servizi.html" class="nav-link flex flex-col items-center group">
+                        <span class="text-sm font-semibold text-slate-700 group-hover:text-blue-600">Servizi</span>
+                        <span class="text-xs text-slate-400">Cosa offriamo</span>
+                    </a>
+                    <a href="dove-siamo.html" class="nav-link flex flex-col items-center group">
+                        <span class="text-sm font-semibold text-slate-700 group-hover:text-blue-600">Dove siamo</span>
+                        <span class="text-xs text-slate-400">Mappa e indirizzo</span>
+                    </a>
+                </nav>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 border-t border-slate-100">
+                <a href="index.html" class="block py-3 text-blue-700 font-semibold">Home</a>
+                <a href="servizi.html" class="block py-3 text-slate-700">Servizi</a>
+                <a href="dove-siamo.html" class="block py-3 text-slate-700">Dove siamo</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-slate-800 via-slate-700 to-blue-900 text-white py-20 lg:py-28">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="relative max-w-7xl mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    Amministrazioni Condominiali<br>
+                    <span class="text-blue-300">Bologna e Provincia</span>
+                </h1>
+                <p class="text-lg lg:text-xl text-slate-300 mb-8 leading-relaxed">
+                    Professionalità, trasparenza e aggiornamento costante per una gestione 
+                    moderna del tuo condominio. Dal 2010 al servizio dei condomini di Bologna.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="servizi.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Scopri i Servizi <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="dove-siamo.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-lg font-semibold transition-colors backdrop-blur-sm">
+                        <i class="fas fa-map-marker-alt"></i> Dove Siamo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">
+                        Lo Studio <span class="emmezeta-text-gradient">Emmezeta</span>
+                    </h2>
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
+                        <p>L'attività del nostro Studio è iniziata nel <strong class="text-slate-800">2010</strong>, 
+                        e da allora abbiamo avuto l'opportunità di accrescere la nostra esperienza 
+                        e di affermare la nostra professionalità nel settore delle amministrazioni condominiali.</p>
+                        <p>Il <strong class="text-slate-800">continuo aggiornamento professionale e strutturale</strong> ci consente 
+                        una gestione moderna e costantemente adeguata sotto il profilo amministrativo, 
+                        informatico e fiscale.</p>
+                        <p>Disponiamo della collaborazione di <strong class="text-slate-800">imprese e artigiani selezionati</strong> negli anni, 
+                        che ci garantiscono qualità e tempestività di intervento per ogni eventuale 
+                        necessità degli stabili (muratura, idraulica, elettricità, fabbro, ecc.).</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="service-card border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                        <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-slate-800 mb-2">Professionalità</h3>
+                        <p class="text-sm text-slate-500">Esperienza consolidata dal 2010</p>
+                    </div>
+                    <div class="service-card border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                        <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clock text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-slate-800 mb-2">Tempestività</h3>
+                        <p class="text-sm text-slate-500">Interventi rapidi e puntuali</p>
+                    </div>
+                    <div class="service-card border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                        <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-slate-800 mb-2">Aggiornamento</h3>
+                        <p class="text-sm text-slate-500">Costante formazione professionale</p>
+                    </div>
+                    <div class="service-card border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                        <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-award text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-slate-800 mb-2">Qualità</h3>
+                        <p class="text-sm text-slate-500">Collaborazione con ditte selezionate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-16 lg:py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
+                    I Nostri <span class="emmezeta-text-gradient">Servizi</span>
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Offriamo una gamma completa di servizi per la gestione del tuo condominio 
+                    e dei tuoi immobili.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-card bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-building text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-2">Gestione Condomini</h3>
+                    <p class="text-sm text-slate-500">Amministrazione completa di stabili in condominio con contabilità trasparente.</p>
+                </div>
+                <div class="service-card bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-calculator text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-2">Contabilità Privati</h3>
+                    <p class="text-sm text-slate-500">Servizi contabili personalizzati per privati e piccole imprese.</p>
+                </div>
+                <div class="service-card bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-2">Intermediazione Immobiliare</h3>
+                    <p class="text-sm text-slate-500">Gestione di immobili in locazione e compravendita.</p>
+                </div>
+                <div class="service-card bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 emmezeta-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-file-contract text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-2">Locazioni</h3>
+                    <p class="text-sm text-slate-500">Contratti residenziali e commerciali con registrazione e adempimenti.</p>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="servizi.html" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+                    Vedi tutti i servizi <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
+                    Il Nostro <span class="emmezeta-text-gradient">Team</span>
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Professionisti qualificati al tuo servizio per ogni esigenza amministrativa e legale.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="team-card bg-white border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-1">Mila Zanforlin</h3>
+                    <p class="text-sm font-medium text-blue-600 mb-2">Amministratrice</p>
+                    <p class="text-xs text-slate-500">Responsabile della gestione condominiale</p>
+                </div>
+                <div class="team-card bg-white border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-1">Valentina Lucia</h3>
+                    <p class="text-sm font-medium text-blue-600 mb-2">Consulente Amministrativa Contabile</p>
+                    <p class="text-xs text-slate-500">Esperta in contabilità e bilanci</p>
+                </div>
+                <div class="team-card bg-white border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-1">Chantal Sardella</h3>
+                    <p class="text-sm font-medium text-blue-600 mb-2">Impiegata Amministrativa Contabile</p>
+                    <p class="text-xs text-slate-500">Supporto gestionale e amministrativo</p>
+                </div>
+                <div class="team-card bg-white border border-slate-100 rounded-xl p-6 text-center shadow-sm">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800 mb-1">Salvatore Lucia</h3>
+                    <p class="text-sm font-medium text-blue-600 mb-2">Avvocato Civilista</p>
+                    <p class="text-xs text-slate-500">Consulenza legale per liti condominiali</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section class="py-16 lg:py-20 bg-gradient-to-br from-red-600 to-red-700 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-phone text-3xl"></i>
+                        <h2 class="text-2xl lg:text-3xl font-bold">Chi contattare in caso di emergenza</h2>
+                    </div>
+                    <p class="text-red-100 mb-6">
+                        Per ogni emergenza relativa al tuo condominio, i nostri numeri sono sempre attivi. 
+                        Non esitare a contattarci per qualsiasi necessità urgente.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="tel:0516412775" class="inline-flex items-center gap-2 bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors">
+                            <i class="fas fa-phone"></i> 051 6412775
+                        </a>
+                        <a href="tel:0516415709" class="inline-flex items-center gap-2 bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors">
+                            <i class="fas fa-phone"></i> 051 6415709
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                    <h3 class="font-semibold mb-4">Numeri utili per emergenze:</h3>
+                    <ul class="space-y-2 text-sm text-red-100">
+                        <li><i class="fas fa-arrow-right mr-2"></i> Vigili del Fuoco: 115</li>
+                        <li><i class="fas fa-arrow-right mr-2"></i> Carabinieri: 112</li>
+                        <li><i class="fas fa-arrow-right mr-2"></i> Polizia: 113</li>
+                        <li><i class="fas fa-arrow-right mr-2"></i> Emergenza Sanitaria: 118</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-20 bg-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4">Hai bisogno di un preventivo?</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+                Contattaci per una consulenza gratuita. Saremo lieti di valutare le tue esigenze 
+                e proporti la soluzione più adatta.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:amministrazionimz@gmail.com" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+                    <i class="fas fa-envelope"></i> Scrivici
+                </a>
+                <a href="tel:0516412775" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+                    <i class="fas fa-phone"></i> Chiamaci
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 emmezeta-gradient rounded-lg flex items-center justify-center text-white font-bold text-lg">E</div>
+                        <span class="text-lg font-bold">STUDIO EMMEZETA</span>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-4 max-w-md">
+                        Amministrazioni condominiali e private. Professionalità, trasparenza e 
+                        aggiornamento costante per una gestione moderna del tuo condominio.
+                    </p>
+                    <p class="text-slate-400 text-sm"><i class="fas fa-building mr-2"></i> P.IVA: 03629741202</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-blue-300">Contatti</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="tel:0516412775" class="flex items-start gap-2 text-slate-300 hover:text-white transition-colors text-sm">
+                                <i class="fas fa-phone mt-0.5"></i>
+                                <span>051 6412775<br>051 6415709</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:amministrazionimz@gmail.com" class="flex items-start gap-2 text-slate-300 hover:text-white transition-colors text-sm">
+                                <i class="fas fa-envelope mt-0.5"></i>
+                                <span>amministrazionimz@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-blue-300">Indirizzo</h3>
+                    <div class="flex items-start gap-2 text-slate-300 text-sm">
+                        <i class="fas fa-map-marker-alt mt-0.5"></i>
+                        <address class="not-italic">
+                            Via Guelfa, 5<br>
+                            (5° piano)<br>
+                            40138 Bologna (BO)
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 py-4">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+                    <p>© 2025 Studio Emmezeta - Amministrazioni Condominiali e Immobiliari</p>
+                    <p>Attività dal 2010</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cookie Banner
+        function showCookieBanner() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                document.getElementById('cookie-banner').classList.remove('hidden');
+            }
+        }
+        
+        function closeCookieBanner() {
+            document.getElementById('cookie-banner').classList.add('hidden');
+        }
+        
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            closeCookieBanner();
+        }
+        
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            closeCookieBanner();
+        }
+        
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Show cookie banner on load
+        showCookieBanner();
+    </script>
+</body>
+</html>
