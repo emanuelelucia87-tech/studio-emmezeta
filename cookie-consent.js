@@ -193,3 +193,24 @@
     init();
   }
 })();
+
+// ✅ APRI IMPOSTAZIONI COOKIE (compatibile con COOKIE PRO)
+window.mzOpenCookieSettings = function () {
+  // Legge la scelta salvata dal COOKIE PRO
+  let c = null;
+  try {
+    c = JSON.parse(localStorage.getItem("mz_cookie_consent_v1"));
+  } catch (e) {}
+
+  // Pre-imposta la checkbox analytics nel modal (se esiste)
+  const cb = document.getElementById("mz-cc-analytics");
+  if (cb) cb.checked = !!(c && c.analytics);
+
+  // Mostra modal + sfondo
+  const modal = document.getElementById("mz-cc-modal");
+  const back = document.getElementById("mz-cc-backdrop");
+  if (modal) modal.classList.remove("hidden");
+  if (back) back.classList.remove("hidden");
+};
+
+
