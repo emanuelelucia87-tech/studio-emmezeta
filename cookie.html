@@ -82,6 +82,35 @@
   </div>
 
   <script src="consenso-cookie.js"></script>
+  
+  <script>
+  // Fallback robusto: apre le impostazioni cookie cliccando "Personalizza"
+  window.mzOpenCookieSettings = function () {
+    // mostra il banner se è nascosto
+    const banner = document.getElementById("mz-cc-banner");
+    if (banner) banner.classList.remove("hidden");
+
+    // prova ad aprire la finestra impostazioni come fa il bottone "Personalizza"
+    const customizeBtn = document.getElementById("mz-cc-customize");
+    if (customizeBtn) {
+      customizeBtn.click();
+      return false;
+    }
+
+    // fallback finale: prova ad aprire direttamente modal/backdrop
+    const modal = document.getElementById("mz-cc-modal");
+    const back = document.getElementById("mz-cc-backdrop");
+    if (modal && back) {
+      modal.classList.remove("hidden");
+      back.classList.remove("hidden");
+      return false;
+    }
+
+    alert("Impostazioni cookie non disponibili (script cookie non inizializzato).");
+    return false;
+  };
+</script>
+
 </body>
 </html>
 
