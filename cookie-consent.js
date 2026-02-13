@@ -177,14 +177,35 @@
     }
 
     // Se in futuro vuoi un link "Modifica cookie" nel footer:
-    // window.mzOpenCookieSettings = openModal;
-    window.mzOpenCookieSettings = function () {
-      // preimposta checkbox con scelta attuale (se esiste)
-      const c = loadConsent();
-      const cb = document.getElementById("mz-cc-analytics");
-      if (cb) cb.checked = !!(c && c.analytics);
-      openModal();
-    };
+ window.mzOpenCookieSettings = function () {
+  // Legge la scelta salvata (se c'è)
+  let c = null;
+  try {
+    c = JSON.parse(localStorage.getItem("mz_cookie_consent_v1"));
+  } catch (e) {}
+
+  // Pre-imposta checkbox analytics nel popup (se esiste)
+  const cb = document.getElementById("mz-cc-analytics");
+  if (cb) cb.checked = !!(c && c.analytics);
+
+  // ✅ Apri direttamente popup + sfondo
+  const modal = document.getElementById("mz-cc-modal");
+  const back = document.getElementById("mz-cc-backdrop");
+
+  if (modal && back) {
+    modal.classList.remove("hidden");
+    back.classList.remove("hidden");
+    return;
+  }
+
+  // Fallback: se popup non esiste, mostra almeno il banner
+  const banner = document.getElementById("mz-cc-banner");
+  if (banner) {
+    banner.classList.remove("hidden");
+    banner.scrollIntoView({ behavior: "smooth", block: "end" });
+  }
+};
+
   }
 
   if (document.readyState === "loading") {
