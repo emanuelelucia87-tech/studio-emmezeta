@@ -418,40 +418,19 @@
             </div>
         </div>
     </footer>
+<script>
 
-    <script>
-        // Cookie Banner
-        function showCookieBanner() {
-            const consent = localStorage.getItem('cookieConsent');
-            if (!consent) {
-                document.getElementById('cookie-banner').classList.remove('hidden');
-            }
-        }
-        
-        function closeCookieBanner() {
-            document.getElementById('cookie-banner').classList.add('hidden');
-        }
-        
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            localStorage.setItem('cookieConsentDate', new Date().toISOString());
-            closeCookieBanner();
-        }
-        
-        function rejectCookies() {
-            localStorage.setItem('cookieConsent', 'rejected');
-            localStorage.setItem('cookieConsentDate', new Date().toISOString());
-            closeCookieBanner();
-        }
-        
-        // Mobile Menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-        
-        // Show cookie banner on load
-        showCookieBanner();
-    </script>
+    // Mobile Menu (LO TENIAMO)
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+</script>
+
+<!-- COOKIE PRO GDPR -->
+<script src="cookie-consent.js"></script>
+
 </body>
 </html>
+
